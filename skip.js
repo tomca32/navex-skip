@@ -19,6 +19,11 @@ var combine = function(a, min) {
   return all;
 }
 
+function overrideTimer() {
+  var d = ng.probe(getAllAngularRootElements()[0]);
+  d.componentInstance.courseTimerService.intMinimumTime = 1;
+}
+
 function getContinueButton() {
   var xpath = "//button[contains(text(),\"Continue\")]";
   return document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -55,6 +60,8 @@ async function solveQuiz() {
 }
 
 async function solveCheckboxQuiz(options) {
+  document.getElementById("next-btn").disabled = false;
+  overrideTimer();
   var allPermutations = combine(options, 1);
   for (p of allPermutations) {
     Array.from(document.querySelectorAll('.option-text-selected')).forEach(function(e) {e.click()})
@@ -154,6 +161,7 @@ async function click_buttons() {
     showAllButton.click();
   }
 
+  overrideTimer();
   var next = document.querySelector('#next-btn:not(.btn-disabled)');
   if (next) {
     console.log("next button found, clicking");
