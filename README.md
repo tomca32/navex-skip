@@ -7,11 +7,11 @@ How To:
 1. Start your quiz, a new browser window will open
 
 2. For this to work you have to take a `Silent` training. At the start you should see three options: Video, Audio, and Silent. Select the Silent option.
-[Select Silent Option](silent_option.png) and click `Continue`.
+![Select Silent Option](silent_option.png) and click `Continue`.
 
-3. Right click anywhere on the quiz page and select inspect option [Select Inspect](inspect.png)
+3. Right click anywhere on the quiz page and select inspect option ![Select Inspect](inspect.png)
 
-4. In the developer tools that just opened, open the Console [Open Console](console.png)
+4. In the developer tools that just opened, open the Console ![Open Console](console.png)
 
 5. Paste the contents of the skip.js file, or from the bottom of this document, into the console and press Enter. You should see the training solving itself.
 
