@@ -6,8 +6,8 @@ How To:
 
 1. Start your quiz, a new browser window will open
 
-2. For this to work you have to take a `Silent` training. At the start you should see three options: Video, Audio, and Silent. Select the Silent option.
-![Select Silent Option](silent_option.png) and click `Continue`.
+2. For this to work you have to take a `Silent` training. At the start you should see three options: Video, Audio, and Silent. Select the Silent option and click Continue.
+![Select Silent Option](silent_option.png)
 
 3. Right click anywhere on the quiz page and select inspect option ![Select Inspect](inspect.png)
 
@@ -18,6 +18,9 @@ How To:
 ## Drag and drop quiz
 
 At the moment this script cannot handle drag and drop so you will have to solve that yourself. Once you're past that just type `run()` in the console and script should continue.
+
+## Code
+Paste this into the console:
 
 ```js
 var combine = function(a, min) {
