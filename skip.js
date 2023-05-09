@@ -95,22 +95,34 @@ async function click_buttons() {
     continueButton.click();
   }
 
+  var feedbackClose = document.querySelector('.feedback-con .fa-times');
+
+  if (feedbackClose) {
+    feedbackClose.click();
+  }
+
   var appQuiz = document.querySelector('app-quiz');
   if (appQuiz) {
     await solveQuiz();
   }
 
-  var tryAgainButton = getTryAgainButton();
+  var quad = document.querySelector('.quad:not(.selected)');
 
-  if (tryAgainButton) {
-    tryAgainButton.click();
+  if (quad) {
+    quad.click();
   }
 
 
   var spot = document.querySelector('.hot-spot-enabled');
   if (spot) {
-    console.log("Spot found, clicking");
-    spot.click();
+    var spotArrowRight = document.querySelector('.fa-arrow-right');
+    if (spotArrowRight) {
+      console.log("spot arrow found, clicking");
+      spotArrowRight.click();
+    } else {
+      console.log("Spot found, clicking");
+      spot.click();
+    }
   }
   var close = document.querySelector('.closeBtnhotspot');
   if (close) {
@@ -163,7 +175,7 @@ async function click_buttons() {
     }
   }
 
-  if (continueButton || spot || close || image || arrowNext || arrowRight || choice || confidence || appQuiz) {
+  if (continueButton || quad || feedbackClose || spot || close || image || arrowNext || arrowRight || choice || confidence || appQuiz) {
     await new Promise(r => setTimeout(r, 100));
     click_buttons()
   } else if (next) {

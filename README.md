@@ -15,6 +15,10 @@ How To:
 
 5. Paste the contents of the skip.js file, or from the bottom of this document, into the console and press Enter. You should see the training solving itself.
 
+## Drag and drop quiz
+
+At the moment this script cannot handle drag and drop so you will have to solve that yourself. Once you're past that just type `run()` in the console and script should continue.
+
 ```js
 var combine = function(a, min) {
   var fn = function(n, src, got, all) {
@@ -113,22 +117,34 @@ async function click_buttons() {
     continueButton.click();
   }
 
+  var feedbackClose = document.querySelector('.feedback-con .fa-times');
+
+  if (feedbackClose) {
+    feedbackClose.click();
+  }
+
   var appQuiz = document.querySelector('app-quiz');
   if (appQuiz) {
     await solveQuiz();
   }
 
-  var tryAgainButton = getTryAgainButton();
+  var quad = document.querySelector('.quad:not(.selected)');
 
-  if (tryAgainButton) {
-    tryAgainButton.click();
+  if (quad) {
+    quad.click();
   }
 
 
   var spot = document.querySelector('.hot-spot-enabled');
   if (spot) {
-    console.log("Spot found, clicking");
-    spot.click();
+    var spotArrowRight = document.querySelector('.fa-arrow-right');
+    if (spotArrowRight) {
+      console.log("spot arrow found, clicking");
+      spotArrowRight.click();
+    } else {
+      console.log("Spot found, clicking");
+      spot.click();
+    }
   }
   var close = document.querySelector('.closeBtnhotspot');
   if (close) {
@@ -181,7 +197,7 @@ async function click_buttons() {
     }
   }
 
-  if (continueButton || spot || close || image || arrowNext || arrowRight || choice || confidence || appQuiz) {
+  if (continueButton || quad || feedbackClose || spot || close || image || arrowNext || arrowRight || choice || confidence || appQuiz) {
     await new Promise(r => setTimeout(r, 100));
     click_buttons()
   } else if (next) {
@@ -202,5 +218,4 @@ function run() {
 }
 
 run();
-
 ```
