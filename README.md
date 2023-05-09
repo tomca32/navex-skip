@@ -44,11 +44,6 @@ var combine = function(a, min) {
   return all;
 }
 
-function getSilentButton() {
-  var xpath = "//i[contains(text(),\"Silent \")]";
-  return document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-}
-
 function getContinueButton() {
   var xpath = "//button[contains(text(),\"Continue\")]";
   return document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -174,6 +169,16 @@ async function click_buttons() {
     arrowRight.click();
   }
 
+  var circleArrow = document.querySelector('.fa-arrow-circle-right');
+  if (circleArrow) {
+    circleArrow.click();
+  }
+
+  var showAllButton = document.querySelector('button.btn-showall');
+  if (showAllButton) {
+    showAllButton.click();
+  }
+
   var next = document.querySelector('#next-btn:not(.btn-disabled)');
   if (next) {
     console.log("next button found, clicking");
@@ -200,7 +205,7 @@ async function click_buttons() {
     }
   }
 
-  if (continueButton || quad || feedbackClose || spot || close || image || arrowNext || arrowRight || choice || confidence || appQuiz) {
+  if (continueButton || quad || feedbackClose || spot || close || image || arrowNext || arrowRight || circleArrow || showAllButton || choice || confidence || appQuiz) {
     await new Promise(r => setTimeout(r, 100));
     click_buttons()
   } else if (next) {
@@ -221,4 +226,5 @@ function run() {
 }
 
 run();
+
 ```
